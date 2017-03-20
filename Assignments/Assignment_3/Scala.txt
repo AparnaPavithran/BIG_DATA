@@ -1,0 +1,123 @@
+Aparna Pavithran
+					Question 1
+				 *********—————********
+
+#Create Dataset
+#val Dataset_Business=sc.textFile("Assi3_Dataset/business.csv").map(a=>a.split("\\^"))
+#val Dataset_Review=sc.textFile("Assi3_Dataset/review.csv").map(a=>a.split("\\^"))
+val Dataset_Business=sc.textFile("/yelp/business/business.csv").map(a=>a.split("\\^"))
+val Dataset_Review=sc.textFile("/yelp/review/review.csv").map(a=>a.split("\\^"))
+
+#mapper - map key(business id) and values (full address and category) - in Business
+val Dataset_Business_1=Dataset_Business.map(a=>(a(0),a(1).toString+a(2).toString))
+
+#mapper - map key(business id) and values (stars) - in Review and reduce it by key
+val sum=Dataset_Review.map(a=>(a(2),a(3).toDouble)).reduceByKey((a,b)=>a+b).distinct
+
+#calculate count of key (business id) - in Review
+val count=Dataset_Review.map(a=>(a(2),1)).reduceByKey((a,b)=>a+b).distinct
+
+#join sum and count to get (business id,(sum,count))
+val join_result=sum.join(count)  
+#calculate average for key
+val rating_avg=join_result.map(a=>(a._1,a._2._1/a._2._2)) 
+#join rating_avg and Business Dataset to get (business id,(full address,category,rating_avg))
+val result_final=Dataset_Business_1.join(rating_avg).distinct.collect()
+
+#sort the final result and get top 10 values
+val result_final_sort=result_final.sortWith(_._2._2>_._2._2).take(10)
+result_final_sort.foreach(a=>println(a._1,a._2._1,a._2._2))
+
+*************************************************************************************************
+
+					Question 2
+   				 *********—————********
+
+#Create Dataset
+#val Dataset_User= sc.textFile("/yelp/user/user.csv").map(a=>a.split("\\^"))
+#val Dataset_Review=sc.textFile("/yelp/review/review.csv").map(a=>a.split("\\^"))
+val Dataset_User= sc.textFile("/yelp/user/user.csv").map(a=>a.split("\\^"))
+val Dataset_Review=sc.textFile("/yelp/review/review.csv").map(a=>a.split("\\^"))
+
+#mapper - map key(user id) and values (stars) - in Review
+val sum=Dataset_Review.map(a=>(a(1),a(3).toDouble)).reduceByKey((a,b)=>a+b).distinct
+#calculate count of key (user id) - in Review
+val count=Dataset_Review.map(a=>(a(1),1)).reduceByKey((a,b)=>a+b).distinct
+
+#join sum and count to get (business id,(sum,count))
+val join_R=sum.join(count)
+#calculate average for key
+val review_avg=join_R.map(a=>(a._1,a._2._1/a._2._2))
+
+#Read username from command line
+val username = Console.readLine()
+#filter Dataset User to get data only with the read username
+val Dataset_User_filter=Dataset_User.filter(a=>a(1).contains(username)).map(a=>(a(0).toString,a(1).toString))
+
+#join filtered User Dataset and Review avg
+val final = review_avg.join(Dataset_User_filter)
+
+final_result.collect.foreach(a=>println(a._1,a._2._1,a._2._2))
+
+
+*************************************************************************************************
+
+					Question 3
+	 			  *********—————********
+
+#Create Dataset
+val Dataset_Business = sc.textFile("/yelp/business/business.csv").map(a=>a.split("\\^"))
+val Dataset_Review=sc.textFile("/yelp/review/review.csv").map(a=>a.split("\\^"))
+
+#filter Business Dataset with “Stanford”
+val Dataset_Business_filter = Dataset_Business.filter(a=>a(1).contains("Stanford")).map(a=>(a(0).toString,a(1).toString))
+
+#mapper - map key(business id) and values (user id and stars) - in Review
+val Review_map = Dataset_Review.map(a=>(a(2).toString,(a(1).toString,a(3).toDouble)))
+
+val res=Review_map.join(Dataset_Business_filter)
+res.collect.foreach(a=>println(a._2._1))
+
+*************************************************************************************************
+
+					Question 4
+				  *********—————********
+
+#Create Dataset
+val Dataset_User=sc.textFile("/yelp/user/user.csv").map(a=>a.split("\\^"))
+val Dataset_Review=sc.textFile("/yelp/review/review.csv").map(a=>a.split("\\^"))
+
+#mapper - map key(user id) and values (user name) - in User
+val Dataset_User_map= Dataset_User.map(a=>(a(0),a(1).toString))
+
+#mapper - map key(user id) and values (1) - in Review and reduce it by key
+val Dataset_Review_map =Dataset_Review.map(a=>(a(1),1)).reduceByKey((a,b)=>a+b).distinct
+
+#Join User and Review with key (user id)
+val join_UR=Dataset_User_map.join(Dataset_Review_map).distinct.collect()
+
+#sort the join result in decreasing order and take top 10 values
+val sorted_join_UR=join_UR.sortWith(_._2._2>_._2._2).take(10)
+sorted_join_UR.foreach(a=>println(a._1,a._2._1,a._2._2))
+
+*************************************************************************************************
+
+					  Question 5
+	  			   *********—————********
+
+#Create Dataset
+val Dataset_Business=sc.textFile("/yelp/business/business.csv").map(a=>a.split("\\^"))
+val Dataset_Review=sc.textFile("/yelp/review/review.csv").map(a=>a.split("\\^"))
+
+#filter Business Dataset with “TX” and the map with key (business id) and values (full address)
+val Dataset_Business_filter=Dataset_Business.filter(a=>a(1).contains("TX")).map(a=>(a(0).toString,a(1).toString))
+
+#mapper - map key(business id) and values (1) - in Review and reduce it by key
+val Dataset_Review_map=Dataset_Review.map(a=>(a(2),1)).reduceByKey((a,b)=>a+b)
+
+#Join Business and Review with key (business id)
+val final_result=Dataset_Business_filter.join(Dataset_Review_map).distinct.collect()
+final_result.foreach(a=>println(a._1,a._2._2))
+
+
+				  *********—————********

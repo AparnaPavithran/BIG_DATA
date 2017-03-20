@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jardesc>
+    <jar path="/Users/APARNA/Desktop/JavaHDFS.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/JavaHDFS/TwitterApp.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="true" overwrite="false" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="true" mainClassHandleIdentifier="=JavaHDFS/src\/main\/java&lt;JavaHDFS.JavaHDFS{Assi_1_Part_1.java[Assi_1_Part_1" manifestLocation="" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
+        <file path="/JavaHDFS/numbers.seq"/>
+        <folder path="/JavaHDFS/target"/>
+        <file path="/JavaHDFS/.numbers.seq.crc"/>
+        <file path="/JavaHDFS/.project"/>
+        <file path="/JavaHDFS/.DS_Store"/>
+        <file path="/JavaHDFS/pom.xml"/>
+        <javaElement handleIdentifier="=JavaHDFS/src\/main\/java"/>
+        <folder path="/JavaHDFS/src"/>
+        <file path="/JavaHDFS/.classpath"/>
+        <javaElement handleIdentifier="=JavaHDFS/src\/test\/java"/>
+    </selectedElements>
+</jardesc>

@@ -1,0 +1,4 @@
+http://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/binary.html#breast-cancer
+in dataset -1.00000 - label replaced by 0
+in dataset 1.000000 - label replaced by 1
+colon-cancer 

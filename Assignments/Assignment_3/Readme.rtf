@@ -1,0 +1,111 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1504
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Regular;\f2\fnil\fcharset0 LucidaGrande;
+\f3\fmodern\fcharset0 CourierNewPSMT;\f4\fnil\fcharset0 Monaco;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red255\green255\blue255;\red0\green0\blue0;
+\red0\green0\blue0;\red255\green255\blue255;}
+{\*\expandedcolortbl;\csgray\c100000;\csgray\c0;\csgray\c100000;\csgenericrgb\c0\c0\c0;
+\cssrgb\c0\c0\c0;\cssrgb\c100000\c100000\c100000;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 Assignment 3 - Aparna Pavithran\
+\
+Hadoop code and Jar file in Assignment_3_BD - folder\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\fs22 \cf2 \cb3 \CocoaLigature0 \
+Question 1\
+\'97\'97\'97\'97\'97\'97\
+Step 1 : Remove the output folder if it already existing.\
+hdfs dfs -rm -r -f /user/axp161730/out_Q1\
+\
+Step 2 : Run the Program CountYelpBusiness_Q1\
+hadoop jar yelp.jar Question_1 /yelp/business/business.csv /yelp/review/review.csv /user/axp161730/out_Q1\
+\
+Step 3 : Check output folder exist or not.\
+hdfs dfs -ls /user/axp161730/out_Q1/part-r-00000\
+\
+Step 4: Check the output.\
+hdfs dfs -cat /user/axp161730/out_Q1/part-r-00000\
+\
+\
+Question 2\
+\'97\'97\'97\'97\'97\'97\
+Step 1 : Remove the output folder if it already existing.\
+hdfs dfs -rm -r -f /user/axp161730/out_Q2\
+\
+Step 2 : Run the Program CountYelpBusiness_Q1\
+hadoop jar yelp.jar Question_2 /yelp/review/review.csv /yelp/user/user.csv /user/axp161730/out_Q2 
+\f2\fs24 \cf4 \CocoaLigature1 \'93GARY-SOUSA G.\'94
+\f1\fs22 \cf2 \CocoaLigature0 \
+\
+\
+Step 3 : Check output folder exist or not.\
+hdfs dfs -ls /user/axp161730/out_Q2/part-r-00000\
+\
+Step 4: Check the output.\
+hdfs dfs -cat /user/axp161730/out_Q2/part-r-00000\
+\
+hdfs dfs -cat /yelp/user/user.csv\
+\
+Question 3\
+\'97\'97\'97\'97\'97\'97\
+Step 1 : Remove the output folder if it already existing.\
+hdfs dfs -rm -r -f /user/axp161730/out_Q3\
+\
+Step 2 : Run the Program CountYelpBusiness_Q1\
+hadoop jar yelp.jar Question_3 /yelp/business/business.csv /yelp/review/review.csv /user/axp161730/out_Q3\
+\
+Step 3 : Check output folder exist or not.\
+hdfs dfs -ls /user/axp161730/out_Q3/part-r-00000\
+\
+Step 4: Check the output.\
+hdfs dfs -cat /user/axp161730/out_Q3/part-r-00000\
+\
+\
+Question 4\
+\'97\'97\'97\'97\'97\'97\
+Step 1 : Remove the output folder if it already existing.\
+hdfs dfs -rm -r -f /user/axp161730/out_Q4\
+\
+Step 2 : Run the Program CountYelpBusiness_Q1\
+hadoop jar yelp.jar Question_4 /yelp/review/review.csv /yelp/user/user.csv /user/axp161730/out_Q4\
+\
+Step 3 : Check output folder exist or not.\
+hdfs dfs -ls /user/axp161730/out_Q4/part-r-00000\
+\
+Step 4: Check the output.\
+hdfs dfs -cat /user/axp161730/out_Q4/part-r-00000
+\f3\fs28 \cf5 \cb6 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+\
+\
+
+\f1\fs22 \cf2 \cb3 \kerning1\expnd0\expndtw0 \CocoaLigature0 Question 5
+\f3\fs28 \cf5 \cb6 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+\'97\'97\'97\'97\
+
+\f1\fs22 \cf2 \cb3 \kerning1\expnd0\expndtw0 \CocoaLigature0 Step 1 : Remove the output folder if it already existing.\
+hdfs dfs -rm -r -f /user/axp161730/outputQ5\
+\
+Step 2 : Run the Program CountYelpBusiness_Q1\
+hadoop jar yelp.jar 
+\f4 \cf0 \CocoaLigature1 TopN_Q5
+\f1 \cf2 \CocoaLigature0  /yelp/review/review.csv /user/axp161730/outputQ5\
+\
+Step 3 : Check output folder exist or not.\
+hdfs dfs -ls /user/axp161730/outputQ5/part-r-00000\
+\
+Step 4: Check the output.\
+hdfs dfs -cat /user/axp161730/outputQ5/part-r-00000\
+\
+\
+\ul Scala\
+\ulnone Scala code for all questions are saved in Scala(.txt) file.\
+Step 1 : Run the below command in utd cluster\
+spark-shell --master yarn\
+\
+Step 2 : Run the code from the Scala file.\ul \
+\ulnone It will print the output in command window.\
+}
