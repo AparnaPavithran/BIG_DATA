@@ -1,0 +1,11 @@
+We have used Databricks for this project.
+
+1. In Databricks first create a cluster 
+2. Create a table and add the dataset in Databricks and copy the path given for the file. 
+3. The dataset is a .txt file and the seperator is a space. 
+4. Then create a notebook in the workspace and paste the code in the notebook.
+5. Use the path of the table which was obtained while adding the dataset. Replace this copied path in the code instead of the path given in the code. 
+In the code comments are given to change the path. Below is the part of the code
+//change path of the dataset here below
+val graph = GraphLoader.edgeListFile(sc, "/FileStore/tables/q801qdzx1478988957778/twitter_combined__1_-a997e.txt")
+6. Run the code in data bricks, to get the strongly connected components along with their tightness.

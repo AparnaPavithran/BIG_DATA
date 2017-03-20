@@ -1,0 +1,30 @@
+1. Connected components - graphx
+2. triangle 
+3. Identify clusters - basically circles / community detection
+4. identify non overlapping circles.
+5. Triangle can be considered only if tight communities must have connections to all other members of the community.
+6. dfs 
+7. tight communities = number of circles - number of overlapping circles.
+
+https://infoscience.epfl.ch/record/177280/files/DataMiningAndAnalysisOnTwitter.pdf
+
+ego networks - network of a user and his friends.
+
+
+Submit	a report containing following on eLearning:
+• Dataset details, such as number of features,	instances,	
+data	distribution
+
+
+• Techniques	you	plan	to	use
+• Experimental	methodology
+• Coding	language	/	technique	to	be	used
+• Preliminary	Results	(if	available)
+
+how strong s link
+
+
+1. Max out degree of each node and take max of that 
+2. triangle count for each vertex - max 
+3. 
+
